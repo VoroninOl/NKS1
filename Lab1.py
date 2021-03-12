@@ -40,7 +40,7 @@ def find_worktime(f, inter, w_t):
     return p
 
 
-def find_last(f, inter, w_t):
+def find_last(inter, w_t):
     c = 0
     while w_t > inter[c]:
         c += 1
@@ -52,6 +52,7 @@ print('Tcp =', time_cp)
 sorted_data = sorted(data)
 print('sorted data =',sorted_data)
 intervals = []
+h = sorted_data[-1]/10
 for i in range(10):
     intervals.append((sorted_data[-1]/10)*(i+1))
 print('intervals = ',intervals)
@@ -61,7 +62,7 @@ for i in range(len(intervals)):
 print('f =', f)
 chance_of_work = [1]
 for i in range(len(intervals)):
-    chance_of_work.append(1-intervals[i]*f[i])
+    chance_of_work.append(h*f[i])
 print('chance of work =', chance_of_work)
 d = []
 for i in range(len(chance_of_work)-1):
@@ -71,7 +72,7 @@ print('d =',d)
 t_y = []
 for i in range(len(d)):
     t_y.append(intervals[i]-intervals[i]*d[i])
-print('t_y =', t_y)
-last = find_last(f, intervals, intensive)
+print('t_y =', t_y[0])
+last = find_last(intervals, intensive)
 print('P =', find_worktime(f, intervals, work_time))
 print('Lambda('+str(intensive)+') = '+str(find_worktime(f, intervals, intensive)))
