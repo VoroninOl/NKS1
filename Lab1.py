@@ -74,5 +74,5 @@ for i in range(len(d)):
     t_y.append(intervals[i]-intervals[i]*d[i])
 print('t_y =', t_y[0])
 last = find_last(intervals, intensive)
-print('P =', find_worktime(f, intervals, work_time))
-print('Lambda('+str(intensive)+') = '+str(find_worktime(f, intervals, intensive)))
+print('P =', 1 - find_worktime(f, intervals, work_time))
+print('Lambda('+str(intensive)+') = '+str(f[last]/(1-find_worktime(f, intervals, intensive))))
